@@ -31,7 +31,10 @@ $(function() {
             }
         })
     }
-
+    // 下拉框
+    // html配置name和value
+    // js获取所有分类（写过ajax）
+    // 筛选按钮
     initCate()
 
     function initCate() {
@@ -47,5 +50,8 @@ $(function() {
 
         );
     }
+
+    // 筛选按钮
+
 
 })
