@@ -43,9 +43,33 @@ $(function() {
             // console.log(fd['title']);
 
         fd.append('state', state)
+        $image.append('state', state)
+        $image.cropper('getCroppedCanvas', {
+                width: 400,
+                height: 200,
+            })
+            .toBlob(function(blob) {
+                fd.append('cover_img', blob)
+                    // console.log(fd);
 
-        fd.forEach(function(v, k) {
-            console.log(k, v)
-        })
+                fd.forEach(function(v, k) {
+                    console.log(k, v)
+                })
+            })
     })
+
+    function publishArticle(fd) {
+        $.ajax({
+            method: 'POST',
+            url: '/my/article/add',
+            data: fd,
+            contentType: false,
+            processData: false,
+            success: function(res) {
+                if (res.status === 0) {
+                    window.location.href = '/article/art_list.html'
+                }
+            },
+        })
+    }
 })
